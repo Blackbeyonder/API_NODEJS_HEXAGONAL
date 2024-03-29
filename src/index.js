@@ -1,12 +1,16 @@
 // Importar Express
+
 const express = require('express');
 const serverConfig = require('../config/server');
 
 // Crear una instancia de la aplicación Express
 const app = express();
 
+// const userController = require('./infrastructure/adapters/controllers/userController');
+const userController = require('./infrastructure/adapters/controllers/userController');
+
 // Escuchar en un puerto específico
-const PORT = process.env.PORT || serverConfig.port;
+const PORT =  serverConfig.port;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
@@ -16,7 +20,5 @@ app.get('/', (req, res) => {
   res.send('¡Hola, mundo! qlo2');
 });
 
-// Definir una ruta para un endpoint específico
-app.get('/saludo', (req, res) => {
-  res.send('¡Hola! ¿Cómo estás?');
-});
+// Monta el controlador de usuarios en la ruta /api
+app.use('/api', userController);
