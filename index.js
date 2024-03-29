@@ -12,7 +12,7 @@ app.listen(PORT, () => {
 
 // Definir una ruta para la raíz de la API
 app.get('/', (req, res) => {
-  res.send('¡Hola, mundo! qlo');
+  res.send('¡Hola, mundo! qlo1');
 });
 
 // Definir una ruta para un endpoint específico
