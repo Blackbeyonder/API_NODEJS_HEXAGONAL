@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../databases/mysql');
 const UserService = require('../../../application/services/user_services'); // Ruta al archivo del servicio de usuarios
-const UserRepository = require('../../../domain/repositories/user_repository'); // Ruta al archivo del servicio de usuarios
+const UserRepository = require('../../repositories/user_repository'); // Ruta al archivo del servicio de usuarios
 
 const userRepository = new UserRepository(pool); // Crear una instancia del repositorio de usuarios
 const userService = new UserService(userRepository); 
