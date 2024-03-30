@@ -1,9 +1,9 @@
 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const dbConfig = require('../../../../config/database'); // Importa la configuración de la base de datos
 
 // Crea una conexión a la base de datos
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: dbConfig.db_host,
   user: dbConfig.db_user,
   password: dbConfig.db_password,
@@ -11,13 +11,14 @@ const connection = mysql.createConnection({
   port:dbConfig.db_port
 });
 
-// Conecta a la base de datos
-connection.connect((err) => {
+// Obtiene una conexión del pool
+pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Error al conectar a la base de datos:', err);
+    console.error('Error al conectar al pool de conexiones:', err);
     return;
   }
-  console.log('Conexión exitosa a la base de datos MySQL');
+  console.log('Conexión exitosa al pool de conexiones MySQL');
+  connection.release(); // Libera la conexión al pool después de usarla
 });
 
-module.exports = connection;
+module.exports = pool;
