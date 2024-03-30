@@ -1,4 +1,3 @@
-// src/infrastructure/adapters/databases/mysql.js
 
 const mysql = require('mysql');
 const dbConfig = require('../../../../config/database'); // Importa la configuración de la base de datos
