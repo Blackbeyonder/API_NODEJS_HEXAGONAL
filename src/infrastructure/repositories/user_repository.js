@@ -1,8 +1,9 @@
 
 //Aqui van todas las consultas a la base de datos
 const User = require('../../domain/entities/User');
+const pool = require('../adapters/databases/mysql');
 class UserRepository {
-    constructor(pool) {
+    constructor() {
       this.pool = pool;
     }
   

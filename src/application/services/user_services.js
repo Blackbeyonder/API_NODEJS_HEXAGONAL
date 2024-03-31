@@ -1,12 +1,19 @@
 // src/application/services/user_service.js
+const DomainUserService = require('../../domain/services/user_services'); // Importa el servicio de dominio de usuarios
 
 class UserService {
-    constructor(userRepository) {
-      this.userRepository = userRepository;
+    constructor() {
+      this.domainUserService = new DomainUserService();
     }
   
     async getAllUsers() {
-      return await this.userRepository.getAll();
+      try {
+        // Llama al método correspondiente en el servicio de dominio de usuarios para obtener todos los usuarios
+        const users = await this.domainUserService.getAllUsers();
+        return users;
+      } catch (error) {
+        throw error;
+      }
     }
   
     async createUser(userData) {
