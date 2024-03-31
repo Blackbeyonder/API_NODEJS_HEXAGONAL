@@ -12,7 +12,7 @@ const userService = new UserService(userRepository);
 // Endpoint para obtener todos los usuarios
 router.get('/users', async (req, res) => {
   try {
-    console.log(req.url); // Imprime la URL solicitada
+    console.log("[GET]",req.url); // Imprime la URL solicitada
     // console.log("Datos del usuario:", req.body); // Imprime los datos enviados por el usuario
 
     const users = await userService.getAllUsers();
