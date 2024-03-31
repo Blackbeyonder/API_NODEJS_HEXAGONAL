@@ -1,4 +1,5 @@
 
+//Aqui van todas las consultas a la base de datos
 class UserRepository {
     constructor(pool) {
       this.pool = pool;
