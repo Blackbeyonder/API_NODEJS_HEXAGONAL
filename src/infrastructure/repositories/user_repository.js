@@ -1,5 +1,6 @@
 
 //Aqui van todas las consultas a la base de datos
+const User = require('../../domain/entities/User');
 class UserRepository {
     constructor(pool) {
       this.pool = pool;
@@ -10,7 +11,7 @@ class UserRepository {
         const connection = await this.pool.getConnection();
         const [rows] = await connection.query('SELECT * FROM users');
         connection.release();
-        return rows;
+        return rows.map(row => new User(row.id, row.name, row.lastname));;
       } catch (error) {
         throw error;
       }
