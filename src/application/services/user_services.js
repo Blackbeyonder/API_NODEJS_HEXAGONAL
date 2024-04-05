@@ -1,9 +1,10 @@
 // src/application/services/user_service.js
+//!Solo sirve para llamar al metodo que le corresponde en DOMAIN 
 const DomainUserService = require('../../domain/services/user_services'); // Importa el servicio de dominio de usuarios
 
 class UserService {
-    constructor() {
-      this.domainUserService = new DomainUserService();
+    constructor(domainUserService) {
+      this.domainUserService =  DomainUserService;
     }
   
     async getAllUsers() {
