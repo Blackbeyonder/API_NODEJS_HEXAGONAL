@@ -1,19 +1,19 @@
-const UserRepository = require('../../infrastructure/repositories/user_repository');
+const UserRepository = require('../repositories/user_repository');
 
 class UserService {
     constructor(userRepository) {
-        this.userRepository =  UserRepository;
+        this.userRepository = userRepository;
     }
-  
+
     async getAllUsers() {
-      return await this.userRepository.getAll();
+        try {
+            return await this.userRepository.getAll();
+        } catch (error) {
+            throw error;
+        }
     }
-  
-    async createUser(userData) {
-      return await this.userRepository.create(userData);
-    }
-  
-    // Otros métodos para actualizar, eliminar usuarios, etc.
-  }
-  
-  module.exports = UserService;
+
+    // Otros métodos de servicio para realizar operaciones relacionadas con usuarios
+}
+
+module.exports = UserService;
